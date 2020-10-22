@@ -1,13 +1,80 @@
----
-layout: presentation
----
 
-{% for post in site.posts reversed %}
-	{% include slide.html %}
-	<div class="page-break"></div>
-{% endfor %}
-{% unless site.simple-slideshow %}
-{% if site.overview %}
-<section id="overview" class="step" {% for attr in site.overview-data %} data-{{attr[0]}}="{{attr[1]}}"{% endfor %}></section>
-{% endif %}
-{% endunless %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact form</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+<div class="container">
+	<div class="contat-title">
+		<h1>Hello</h1>
+		<h2>We are always ready to serve you!</h2>
+	</div>
+	
+	<div class ="contact-form">
+		<form id="contact-form" method="post" action="contact-form-handler.php">
+		
+					  <select name="Title" required >
+						<option value="mr.">mr.</option>
+						<option value="ms.">ms.</option>
+						<option value="mrs.">mrs.</option>
+					  </select><br>
+				<label for="First name">Firstname:<span style="color:red">*</span></label>
+				<input name="Firstname" type="text" class="form-control" method="post"  placeholder="First name" required>
+				
+				<label for="Last name">Lastname:*</label>
+				<input name="Lastname" type="text" class="form-control" method="post" placeholder="Last name" required>
+				
+				<label for="birthday">Birthday:</label>
+				<input type="date"  name="birthday" class="form-control">
+				
+				<label for="phone">phone number*:</label>
+				<input type="tel" name="phone" class="form-control" required>
+				
+				<label for="myfile">Select a file:</label>
+				<input type="file" name="myfile" class="form-control">
+				
+				<label for="Email">Email*:</label>
+				<input name="Email" type="email" class="form-control" method="post" placeholder="Email" required>
+				
+				<label for="Message">Message:</label>
+				<textarea name="Message" class="form-control" placeholder="message" row="5" ></textarea><br>
+				
+				<input type="submit" class="form-control submit bg-info" value="send">
+		</form>
+	</div>
+	
+<script>
+																						// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+																						// Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+																						// Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+</body>
+
+
+</html>
